@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+    app:
+        # image: node:alpine   # Dockerイメージを指定します。
+        container_name: nextjs-practice   # Dockerコンテナ名 
+        build:
+          context: .   # ビルドコンテキスト
+          dockerfile: Dockerfile   # Dockerfileのディレクトリ
+        volumes:
+        - type: bind   # マウントタイプ
+          source: ./app   # マウント元
+          target: /home/app   # マウントされるコンテナのパス
+        ports:
+          - 3333:3000
+        tty: true   # コンテナを起動させ続ける。
